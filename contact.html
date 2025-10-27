@@ -43,47 +43,102 @@
 
                 <div style="max-width:600px;margin:0 auto;text-align:left;">
                     <h2 style="text-align:center;margin-bottom:0.5em;">Contact Form</h2>
-                    <form action="https://api.web3forms.com/submit" method="POST" style="background-image:url(images/cfbacground.webp);padding:100px;border-radius:6px;border:1px solid #e6e6e6;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
-                        <!-- Replace with your Access Key -->
-                        <input type="hidden" name="access_key" value="56287c00-37dc-4c40-94ac-f8dfb067abc7">
 
-                        <label for="name" style="color: #272222; display: block;margin:12px 0;font-weight:600;">Full name
-                            <input id="name" type="text" name="name" required style="width:100%;padding:8px;margin-top:6px;border:1px solid #090909;border-radius:4px;box-sizing:border-box;">
-                        </label>
+                    <style>
+                        /* Form wrapper & sizing */
+                        .contact-form-wrapper {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            box-sizing: border-box;
+                        }
 
-                        <label for="phone" style="color: #272222;display:block;margin:12px 0;font-weight:600;">Phone number
-                            <input id="phone" type="tel" name="phone" required style="width:100%;padding:8px;margin-top:6px;border:1px solid #090909;border-radius:4px;box-sizing:border-box;">
-                        </label>
+                        /* Use clamp for padding so the look stays consistent across sizes */
+                        .contact-form {
+                            background-image: url(images/cfbacground.webp);
+                            background-size: cover;
+                            background-position: center;
+                            padding: clamp(24px, 6vw, 100px);
+                            border-radius: 6px;
+                            border: 1px solid #e6e6e6;
+                            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+                            box-sizing: border-box;
+                        }
 
-                        <label for="email" style="color: #272222;display:block;margin:12px 0;font-weight:600;">Email
-                            <input id="email" type="email" name="email" required style="width:100%;padding:8px;margin-top:6px;border:1px solid #090909;border-radius:4px;box-sizing:border-box;">
-                        </label>
+                        /* Inputs / textarea - always full width and consistent spacing */
+                        .contact-form label {
+                            display: block;
+                            color: #272222;
+                            font-weight: 600;
+                            margin: 12px 0 0;
+                        }
+                        .contact-form input[type="text"],
+                        .contact-form input[type="tel"],
+                        .contact-form input[type="email"],
+                        .contact-form textarea {
+                            width: 100%;
+                            padding: 8px;
+                            margin-top: 6px;
+                            border: 1px solid #090909;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                            font-size: 1rem;
+                        }
 
-                        <label for="message" style="color: #272222;display:block;margin:12px 0;font-weight:600;">Message
-                            <textarea id="message" name="message" required rows="6" style="width:100%;padding:8px;margin-top:6px;border:1px solid #090909;border-radius:4px;box-sizing:border-box;"></textarea>
-                        </label>
+                        /* Honeypot hidden consistently */
+                        .contact-form .hidden {
+                            display: none !important;
+                        }
 
-                        <!-- Honeypot Spam Protection -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        /* Button style */
+                        .booking-btn {
+                            background: #ff6600;
+                            color: #fff;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 1rem;
+                        }
+                        .booking-btn:hover {
+                            background: #005a9e;
+                        }
 
-                        <div style="text-align:center;margin-top:14px;">
-                            <style>
-                                .booking-btn {
-                                    background: #ff6600;
-                                    color: #fff;
-                                    border: none;
-                                    padding: 10px 20px;
-                                    border-radius: 4px;
-                                    cursor: pointer;
-                                    font-weight: 600;
-                                }
-                                .booking-btn:hover {
-                                    background: #005a9e;
+                        /* Keep spacing similar on very small screens */
+                        @media (max-width: 360px) {
+                            .contact-form {
+                                padding: 20px;
+                            }
+                        }
+                    </style>
 
-                                }
-                            </style>
+                    <div class="contact-form-wrapper">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                            <!-- Replace with your Access Key -->
+                            <input type="hidden" name="access_key" value="56287c00-37dc-4c40-94ac-f8dfb067abc7">
 
-                            <button type="submit" class="booking-btn">
+                            <label for="name">Full name
+                                <input id="name" type="text" name="name" required>
+                            </label>
+
+                            <label for="phone">Phone number
+                                <input id="phone" type="tel" name="phone" required>
+                            </label>
+
+                            <label for="email">Email
+                                <input id="email" type="email" name="email" required>
+                            </label>
+
+                            <label for="message">Message
+                                <textarea id="message" name="message" required rows="6"></textarea>
+                            </label>
+
+                            <!-- Honeypot Spam Protection -->
+                            <input type="checkbox" name="botcheck" class="hidden">
+
+                            <div style="text-align:center;margin-top:14px;">
+                                <button type="submit" class="booking-btn">
                                 Submit
                             </button>
                         </div>
